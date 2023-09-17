@@ -1,5 +1,9 @@
 use actix_web::{get, App, HttpResponse, HttpServer, Responder};
 
+mod database;
+mod models;
+mod schema;
+
 #[get("/")]
 async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello world!")
