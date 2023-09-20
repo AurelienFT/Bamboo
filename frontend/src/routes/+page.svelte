@@ -1,8 +1,13 @@
 <script>
 	import { css } from 'styled-system/css';
-    import {  hstack} from 'styled-system/patterns'
+    import { hstack } from 'styled-system/patterns'
     import themeStore, { setTheme } from 'svelte-themes/themeStore';
+    import { PUBLIC_GITHUB_CLIENT_ID } from '$env/static/public'
     let logo = "/logo.png"
+
+    function connectGithub() {
+        window.location.href = `https://github.com/login/oauth/authorize?client_id=${PUBLIC_GITHUB_CLIENT_ID}&redirect_uri=http://localhost:8080/github_oauth`;
+    }
 </script>
  
 <div class={hstack({justify: 'space-between', bg: "bg.inverted", px: '4'})}>
@@ -18,7 +23,7 @@
         <img class={css({width: 8 })} src={logo} alt="Bamboo logo" />
     </div>
     <div class={hstack({gap: 2})}>
-    <button>
+    <button on:click={connectGithub}>
         Connect with github
     </button>
     <button on:click={() => $themeStore.theme == 'light' ? setTheme('dark'): setTheme('light')}>

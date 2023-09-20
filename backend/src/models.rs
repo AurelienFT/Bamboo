@@ -1,5 +1,5 @@
-use diesel::prelude::*;
 use crate::schema::users;
+use diesel::prelude::*;
 
 #[derive(Queryable, Selectable)]
 #[diesel(table_name = crate::schema::users)]
